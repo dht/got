@@ -1,0 +1,9 @@
+.Next-container {
+  button {
+    margin: 5px;
+
+    &:first-child {
+      background-color: #ccc;
+    }
+  }
+}

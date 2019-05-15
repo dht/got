@@ -5,6 +5,17 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url(/bk.jpg);
+  direction: rtl;
+}
+
+body,
+button,
+h1,
+h2,
+input,
+textarea {
+  font-family: "Rubik", sans-serif;
 }
 
 code {
