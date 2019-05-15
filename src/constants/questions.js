@@ -7,6 +7,7 @@ export default [
   {
     id: 2,
     title: "מי ישרוד?",
-    scoring: "10 נקודות לניחוש נכון, -10 לטעות"
+    scoring: "10 נקודות לניחוש נכון, -10 לטעות",
+    isMultiple: true
   }
 ];

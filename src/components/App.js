@@ -71,9 +71,17 @@ export class App extends React.Component {
   }
 
   onChange = person => {
-    const { answers, index } = this.state;
+    const { answers, index } = this.state,
+      { isMultiple } = this.question;
 
-    answers[index].people[person.id] = !person.selected;
+    const value = !person.selected;
+
+    if (isMultiple) {
+      answers[index].people[person.id] = value;
+    } else {
+      answers[index].people = { [person.id]: value };
+    }
+
     this.setState({ answers });
   };
 
