@@ -1,0 +1,24 @@
+.Game-container {
+  padding: 20px;
+
+  .name {
+    font-size: 30px;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 5px 10px;
+    margin-bottom: 10px;
+  }
+
+  .title {
+    font-size: 20px;
+    margin-top: 10px;
+  }
+
+  .people {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: 5px 0 10px;
+  }
+}

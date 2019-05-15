@@ -1,8 +1,9 @@
 {
   "rules": {
-    ".read": false,
+    ".read": true,
     "games": {
       "$gameId": {
+        ".read": true,
         ".write": "!data.exists()"
       }
     }

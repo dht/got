@@ -11,10 +11,14 @@ export class Avatar<Props> extends Component {
 
   state = {};
 
-  style = () => {
+  get id() {
     const { person } = this.props,
       { id } = person;
 
+    return id;
+  }
+
+  style = id => {
     return {
       backgroundImage: `url(/images/p${id}.jpg)`
     };
@@ -26,6 +30,14 @@ export class Avatar<Props> extends Component {
     this.props.onClick(person);
   };
 
+  renderCorner() {
+    const { corner } = this.props;
+
+    if (!corner) return null;
+
+    return <div className={"corner"} style={this.style(corner)} />;
+  }
+
   render() {
     const { person } = this.props;
 
@@ -34,8 +46,14 @@ export class Avatar<Props> extends Component {
     });
 
     return (
-      <div className={className} onClick={this.onClick} style={this.style()}>
+      <div
+        className={className}
+        onClick={this.onClick}
+        style={this.style(this.id)}
+      >
         <i className="material-icons">done</i>
+
+        {this.renderCorner()}
       </div>
     );
   }

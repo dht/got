@@ -50,3 +50,9 @@ export const peopleToAnswers = ppl => {
 export const saveGuess = (answers, user) => {
   return games.push({ answers, ...user });
 };
+
+export const getAll = () => {
+  return games.once("value").then(function(snapshot) {
+    return snapshot.val();
+  });
+};
