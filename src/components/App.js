@@ -23,20 +23,33 @@ export class App extends React.Component {
         id: 2,
         people: {}
       }
-    ],
-    index: -1
+    ]
   };
 
   get question() {
-    const { questions, index } = this.state;
+    const { questions } = this.state;
+    const index = this.index;
 
     return questions[index];
   }
 
   get answer() {
-    const { answers, index } = this.state;
+    const { answers } = this.state;
+    const index = this.index;
 
     return answers[index];
+  }
+
+  set index(value) {
+    this.props.history.push(`/${value}`);
+  }
+
+  get index() {
+    const { match } = this.props,
+      { params } = match || {},
+      { stage } = params || {};
+
+    return stage || -1;
   }
 
   renderStart() {
@@ -45,7 +58,7 @@ export class App extends React.Component {
         <img src={logo} className="App-logo" alt="logo" />
         <h2>חידון משחקי הכס</h2>
         <p>נחש/י מה יקרה בפרק הבא</p>
-        <button onClick={() => this.setState({ index: 0 })}>התחלת המשחק</button>
+        <button onClick={() => (this.index = 0)}>התחלת המשחק</button>
       </div>
     );
   }
@@ -71,8 +84,10 @@ export class App extends React.Component {
   }
 
   onChange = person => {
-    const { answers, index } = this.state,
+    const { answers } = this.state,
       { isMultiple } = this.question;
+
+    const index = this.index;
 
     const value = !person.selected;
 
@@ -104,20 +119,20 @@ export class App extends React.Component {
   };
 
   next = () => {
-    let { index } = this.state;
+    let index = this.index;
     index++;
 
     if (index === 2) {
       this.generateExtraQuestions();
     }
 
-    this.setState({ index });
+    this.index = index;
   };
 
   previous = () => {
-    let { index } = this.state;
+    let index = this.index;
     index--;
-    this.setState({ index });
+    this.index = index;
   };
 
   style = i => {
@@ -128,7 +143,8 @@ export class App extends React.Component {
   };
 
   renderQuestion(i) {
-    const { questions, answers, index } = this.state;
+    const { questions, answers } = this.state;
+    const index = this.index;
 
     const question = questions[i];
     const answer = answers[i];
@@ -153,7 +169,7 @@ export class App extends React.Component {
   }
 
   render() {
-    const { index } = this.state;
+    const index = this.index;
 
     const screens = [
       this.renderStart(),
