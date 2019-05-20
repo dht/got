@@ -29,9 +29,9 @@ export class Browse<Props> extends Component {
 
     return (
       <div className="Browse-container">
-        {Object.values(games).map((game, index) =>
-          this.renderGame(game, index)
-        )}
+        {Object.values(games)
+          .sort((a, b) => b.score - a.score)
+          .map((game, index) => this.renderGame(game, index))}
       </div>
     );
   }

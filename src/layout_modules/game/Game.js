@@ -63,11 +63,14 @@ export class Game<Props> extends Component {
 
   render() {
     const { game } = this.props,
-      { nickname, name, answers } = game;
+      { nickname, name, score } = game;
 
     return (
       <div className="Game-container">
-        <div className="name">{nickname || name}</div>
+        <div className="name">
+          {nickname || name}
+          <div> ({score} נקודות)</div>
+        </div>
         {this.renderRules()}
         {this.renderCasualties()}
       </div>

@@ -1,5 +1,6 @@
 .Game-container {
   padding: 20px;
+  direction: rtl;
 
   .name {
     font-size: 30px;
@@ -11,6 +12,7 @@
   .title {
     font-size: 20px;
     margin-top: 10px;
+    direction: rtl;
   }
 
   .people {
